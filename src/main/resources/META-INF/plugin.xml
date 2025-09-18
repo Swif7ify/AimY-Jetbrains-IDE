@@ -1,0 +1,50 @@
+<idea-plugin>
+    <id>com.aimy.jetbrains</id>
+    <name>AimY - Aim Trainer</name>
+    <vendor email="earl.coding@gmail.com" url="https://github.com/Swif7ify/AimY-Jetbrains-IDE">AimY</vendor>
+
+    <description><![CDATA[
+    Stop Coding, Start Shooting!<br>
+    AimY turns your idle time into aim training sessions. When you stop coding, targets appear and you need to hit them to get back to work.
+
+    Features:
+    • Multiple game modes (Target Rush, Time Frenzy, Hydra Targets)
+    • Difficulty presets and customization
+    • Performance tracking and stats
+    • Theme-aware UI
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Status bar widget -->
+        <statusBarWidgetFactory implementation="com.aimy.ui.AimYStatusBarWidgetFactory"/>
+
+        <!-- Settings -->
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.aimy.settings.AimYConfigurable"
+                id="com.aimy.settings.AimYConfigurable"
+                displayName="AimY Settings"/>
+
+        <!-- Application service -->
+        <applicationService serviceImplementation="com.aimy.service.AimYService"/>
+    </extensions>
+
+    <actions>
+        <action id="com.aimy.StartGameAction"
+                class="com.aimy.actions.StartGameAction"
+                text="AimY: Start Game"
+                description="Manually start AimY game">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift A"/>
+        </action>
+
+        <action id="com.aimy.ToggleAction"
+                class="com.aimy.actions.ToggleAction"
+                text="AimY: Toggle Auto-Start"
+                description="Toggle AimY auto-start">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
