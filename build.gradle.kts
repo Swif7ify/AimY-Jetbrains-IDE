@@ -47,7 +47,7 @@ dependencies {
 
     // Add coroutines and serialization for AimY functionality
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 }
 
 // Configure IntelliJ Platform Gradle Plugin
