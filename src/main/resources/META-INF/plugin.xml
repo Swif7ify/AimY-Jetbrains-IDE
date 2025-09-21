@@ -1,0 +1,51 @@
+<idea-plugin>
+    <id>com.aimy.jetbrains</id>
+    <name>AimY - Aim Trainer</name>
+    <vendor email="earl.coding@gmail.com" url="https://github.com/Swif7ify/AimY">AimY</vendor>
+    <version>1.0.0</version>
+
+    <description><![CDATA[
+    <h3>Stop Coding, Start Shooting!</h3>
+    <p>AimY turns your idle time into aim training sessions. When you stop coding, targets appear and you need to hit them to get back to work.</p>
+
+    <h4>Features:</h4>
+    <ul>
+        <li><strong>Multiple game modes:</strong> Target Rush, Time Frenzy, Hydra Targets</li>
+        <li><strong>Difficulty presets:</strong> Easy, Normal, Hard, Very Hard, Custom</li>
+        <li><strong>Performance tracking:</strong> Comprehensive stats with CSV/JSON export</li>
+        <li><strong>Theme-aware UI:</strong> Matches your IDE theme</li>
+        <li><strong>Customizable:</strong> Adjust targets, timing, and behavior</li>
+    </ul>
+
+    <p>Perfect for taking active breaks that improve your mouse precision!</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <statusBarWidgetFactory implementation="com.aimy.ui.AimYStatusBarWidgetFactory"/>
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.aimy.settings.AimYConfigurable"
+                id="com.aimy.settings.AimYConfigurable"
+                displayName="AimY Settings"/>
+        <fileEditorProvider implementation="com.aimy.ui.AimYFileEditorProvider"/>
+    </extensions>
+
+    <actions>
+        <action id="com.aimy.StartGameAction"
+                class="com.aimy.actions.StartGameAction"
+                text="AimY: Start Game"
+                description="Manually start AimY game">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift A"/>
+        </action>
+
+        <action id="com.aimy.ToggleAction"
+                class="com.aimy.actions.ToggleAction"
+                text="AimY: Toggle Auto-Start"
+                description="Toggle AimY auto-start">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
